@@ -20,7 +20,7 @@ class ExampleInstrumentedTest {
 
         composeTestRule.onNodeWithText("First").assertIsDisplayed()
 
-        // Hangs after item is chosen
+        // Hangs after item is chosen (Still hangs if using the latest version of compose)
         // Logcat shows "These resources are not idle: [Compose-Espresso link]"
         composeTestRule.onNodeWithText("First").performClick()
 
@@ -32,12 +32,13 @@ class ExampleInstrumentedTest {
         composeTestRule.setContent {
             SimpleForm()
         }
+        composeTestRule.mainClock.autoAdvance = false
         val ticketNumber = composeTestRule.onNodeWithText("Label")
 
         ticketNumber.assertExists()
         ticketNumber.assertIsDisplayed()
 
-        // Hangs after text is set
+        // Hangs after text is set (Doesn't hang if using the latest version of compose)
         // Logcat shows "These resources are not idle: [Compose-Espresso link]"
         ticketNumber.performTextInput("some message")
     }
