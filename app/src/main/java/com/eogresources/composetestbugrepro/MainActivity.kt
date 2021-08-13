@@ -81,6 +81,7 @@ fun Dropdown() {
             ),
             modifier = Modifier.fillMaxWidth(),
         ) {
+            // Change this to TextField and the tests will pass
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = value,
@@ -112,12 +113,12 @@ fun Dropdown() {
 
 @Composable
 fun TextInput() {
-    val defaultSizeModifier = Modifier.fillMaxWidth()
     var value by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
 
+    // Change this to TextField and the tests will pass
     OutlinedTextField(
-        modifier = defaultSizeModifier,
+        modifier = Modifier.fillMaxWidth(),
         value = value,
         onValueChange = {
             value = it
